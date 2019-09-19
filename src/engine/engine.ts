@@ -5,7 +5,7 @@ export const train = (firstAgent: QAgent, secondAgent: QAgent) => {
     let agents = [firstAgent.play, secondAgent.play];
     const initialGame = new Game();
     const gamesToReplay: Game[] = [ initialGame ];
-    const nbGameWithoutReplay = 20000;
+    const nbGameWithoutReplay = 10000;
     const start = new Date();
 
     const chooseExplorationFactor = (i: number) => {
@@ -35,7 +35,7 @@ export const train = (firstAgent: QAgent, secondAgent: QAgent) => {
       // less after
       const explorationFactor = chooseExplorationFactor(i);
       firstAgent.explorationFactor = explorationFactor;
-      secondAgent.explorationFactor = explorationFactor;
+      secondAgent.explorationFactor = 0;
 
       // initial game can be an empty board
       // or a replayed experience
